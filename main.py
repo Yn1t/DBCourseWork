@@ -8,32 +8,57 @@ from PyQt5.QtGui import QIcon
 
 class Pub(QMainWindow):
 
-    def initToolBar(self):
+    def initAddBar(self):
         add = self.menuBar()
-        addmenu = add.addMenu('&Добавить')
+        add_menu = add.addMenu('&Добавить')
 
         dish = QAction(QIcon('resources/dish.png'), 'Блюдо', self)
-        addmenu.addAction(dish)
+        add_menu.addAction(dish)
 
         nonalcoholic = QAction(QIcon('resources/nonalcoholic.png'), 'Безалкогольный напиток', self)
-        addmenu.addAction(nonalcoholic)
+        add_menu.addAction(nonalcoholic)
 
         alcoholic = QAction(QIcon('resources/alcoholic.png'), 'Алкогольный напиток', self)
-        addmenu.addAction(alcoholic)
+        add_menu.addAction(alcoholic)
 
         waiter = QAction(QIcon('resources/waiter.png'), 'Оффициант', self)
-        addmenu.addAction(waiter)
+        add_menu.addAction(waiter)
 
         client = QAction(QIcon('resources/client.png'), 'Клиент', self)
-        addmenu.addAction(client)
+        add_menu.addAction(client)
 
         ingredient = QAction(QIcon('resources/carrot.png'), 'Ингредиент', self)
-        addmenu.addAction(ingredient)
+        add_menu.addAction(ingredient)
 
         provider = QAction(QIcon('resources/provider.png'), 'Поставщик', self)
-        addmenu.addAction(provider)
+        add_menu.addAction(provider)
 
         #self.toolbar = self.addToolBar('Hi')
+
+    def initGetBar(self):
+        get = self.menuBar()
+        get_menu = get.addMenu('&Получить')
+
+        get_dish = QAction(QIcon('resources/dish.png'), 'Блюдо', self)
+        get_menu.addAction(get_dish)
+
+        get_nonalcoholic = QAction(QIcon('resources/nonalcoholic.png'), 'Безалкогольный напиток', self)
+        get_menu.addAction(get_nonalcoholic)
+
+        get_alcoholic = QAction(QIcon('resources/alcoholic.png'), 'Алкогольный напиток', self)
+        get_menu.addAction(get_alcoholic)
+
+        get_waiter = QAction(QIcon('resources/waiter.png'), 'Оффициант', self)
+        get_menu.addAction(get_waiter)
+
+        get_client = QAction(QIcon('resources/client.png'), 'Клиент', self)
+        get_menu.addAction(get_client)
+
+        get_ingredient = QAction(QIcon('resources/carrot.png'), 'Ингредиент', self)
+        get_menu.addAction(get_ingredient)
+
+        get_provider = QAction(QIcon('resources/provider.png'), 'Поставщик', self)
+        get_menu.addAction(get_provider)
 
     def __init__(self):
         super().__init__()
@@ -42,7 +67,8 @@ class Pub(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        self.initToolBar()
+        self.initAddBar()
+        self.initGetBar()
 
         self.setGeometry(300, 300, 800, 600)
         self.setWindowTitle('Паб')
