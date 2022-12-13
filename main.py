@@ -3,9 +3,17 @@
 
 import sys
 import psycopg2
-from PyQt5.QtWidgets import QMainWindow, QApplication, QAction
+from PyQt5.QtWidgets import QMainWindow, QApplication, QAction, QMessageBox
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
+
+
+def About():
+    msg_box = QMessageBox()
+    msg_box.setIcon(QMessageBox.Information)
+    msg_box.setText("Автор: студент группы М8О-310Б-20 Петров Никита")
+    msg_box.setWindowTitle("Об авторе")
+    msg_box.exec()
 
 
 class Pub(QMainWindow):
@@ -120,12 +128,6 @@ class Pub(QMainWindow):
         change_bill = QAction(QIcon('venv/resources/check.png'), 'Счёт', self)
         change_menu.addAction(change_bill)
 
-    def initSchemeBar(self):
-        scheme = self.menuBar()
-        scheme_menu = scheme.addMenu('&Изменить')
-        scheme_action = QAction(QIcon('venv/resources/dish.png'), 'Блюдо', self)
-        scheme_menu.addAction(scheme_action)
-
     def __init__(self):
         super().__init__()
 
@@ -141,6 +143,13 @@ class Pub(QMainWindow):
         self.initAddBar()
         self.initGetBar()
         self.initChangeBar()
+
+        scheme_action = QAction('Схема', self)
+        self.menuBar().addAction(scheme_action)
+
+        about = QAction('Об авторе', self)
+        about.triggered.connect(About)
+        self.menuBar().addAction(about)
 
         self.setGeometry(300, 300, 800, 600)
         self.setWindowIcon(QIcon('venv/resources/pub.png'))
